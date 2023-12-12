@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>xyz.equator8848</groupId>
+    <artifactId>common-infrastructure</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>xyz.equator8848</groupId>
+  <artifactId>email</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>email</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>xyz.equator8848</groupId>
+      <artifactId>core</artifactId>
+      <version>${revision}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.aliyun</groupId>
+      <artifactId>dm20151123</artifactId>
+    </dependency>
+  </dependencies>
+</project>
