@@ -1,11 +1,11 @@
 package xyz.equator8848.inf.cache.guava;
 
-import xyz.equator8848.inf.cache.common.VersionCacheElement;
-import xyz.equator8848.inf.cache.common.VersionCacheLoader;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import xyz.equator8848.inf.cache.common.VersionCacheElement;
+import xyz.equator8848.inf.cache.common.VersionCacheLoader;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.TimeUnit;

@@ -1,7 +1,6 @@
 package xyz.equator8848.inf.core.util.json;
 
 
-import xyz.equator8848.inf.core.model.exception.InnerException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -10,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.extern.slf4j.Slf4j;
+import xyz.equator8848.inf.core.model.exception.InnerException;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 非驼峰字段无法序列化 https://zhuanlan.zhihu.com/p/628668559
  * @Author: Equator
  * @Date: 2020/11/1 22:01
  **/

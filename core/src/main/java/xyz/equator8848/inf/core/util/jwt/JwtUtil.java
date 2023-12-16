@@ -5,8 +5,8 @@ import com.auth0.jwt.JWTCreator;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import xyz.equator8848.inf.core.dynamic.properties.AuthConfig;
 import org.apache.commons.lang3.tuple.Pair;
+import xyz.equator8848.inf.core.dynamic.properties.AuthConfig;
 
 import java.util.Date;
 import java.util.Map;

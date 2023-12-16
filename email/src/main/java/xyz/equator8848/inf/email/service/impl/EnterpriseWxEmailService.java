@@ -1,9 +1,9 @@
 package xyz.equator8848.inf.email.service.impl;
 
 
-import xyz.equator8848.inf.core.model.exception.InnerException;
 import com.sun.mail.util.MailSSLSocketFactory;
 import lombok.extern.slf4j.Slf4j;
+import xyz.equator8848.inf.core.model.exception.InnerException;
 import xyz.equator8848.inf.email.config.EmailConfiguration;
 import xyz.equator8848.inf.email.model.Email;
 import xyz.equator8848.inf.email.service.DirectEmailService;

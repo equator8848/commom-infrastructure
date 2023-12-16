@@ -1,7 +1,7 @@
 package xyz.equator8848.inf.cache.guava;
 
-import xyz.equator8848.inf.cache.common.SimpleCacheElement;
 import com.google.common.cache.CacheBuilder;
+import xyz.equator8848.inf.cache.common.SimpleCacheElement;
 
 import java.util.concurrent.TimeUnit;
 

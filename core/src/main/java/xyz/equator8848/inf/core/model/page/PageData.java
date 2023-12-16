@@ -1,9 +1,9 @@
 package xyz.equator8848.inf.core.model.page;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import xyz.equator8848.inf.core.model.serialize.KeepRawSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import xyz.equator8848.inf.core.model.serialize.KeepRawSerializer;
 
 import java.util.List;
 

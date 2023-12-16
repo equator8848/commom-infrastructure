@@ -1,5 +1,5 @@
 # common-inf
-
+> package: xyz.equator8848.inf
 ## core
 > http json jwt util
 
@@ -12,6 +12,8 @@
 ## auth
 > login
 
+## wx
+> 微信相关工具
 # licence
 - GPL
 

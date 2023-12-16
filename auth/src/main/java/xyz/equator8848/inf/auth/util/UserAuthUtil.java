@@ -2,6 +2,9 @@ package xyz.equator8848.inf.auth.util;
 
 
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.google.common.collect.ImmutableMap;
+import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
 import xyz.equator8848.inf.auth.model.bo.LoginUser;
 import xyz.equator8848.inf.auth.model.constant.RoleType;
 import xyz.equator8848.inf.core.dynamic.properties.BaseConfig;
@@ -9,9 +12,6 @@ import xyz.equator8848.inf.core.model.exception.ForbiddenException;
 import xyz.equator8848.inf.core.model.exception.PreCondition;
 import xyz.equator8848.inf.core.util.json.JsonUtil;
 import xyz.equator8848.inf.core.util.jwt.JwtUtil;
-import com.google.common.collect.ImmutableMap;
-import org.apache.commons.lang3.tuple.Pair;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 

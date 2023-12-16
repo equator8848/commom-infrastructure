@@ -2,13 +2,12 @@ package xyz.equator8848.inf.email.service.impl;
 
 
 import com.aliyun.dm20151123.models.SingleSendMailResponse;
+import lombok.extern.slf4j.Slf4j;
 import xyz.equator8848.inf.core.model.exception.InnerException;
 import xyz.equator8848.inf.core.model.exception.PreCondition;
-import lombok.extern.slf4j.Slf4j;
 import xyz.equator8848.inf.email.config.EmailConfiguration;
 import xyz.equator8848.inf.email.model.Email;
 import xyz.equator8848.inf.email.service.DirectEmailService;
-import xyz.equator8848.inf.email.service.impl.AliEmailConfiguration;
 
 /**
  * 阿里云邮件服务

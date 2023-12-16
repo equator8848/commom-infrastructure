@@ -13,6 +13,7 @@
         <module>auth</module>
         <module>cache</module>
         <module>email</module>
+        <module>wx</module>
     </modules>
 
     <properties>
@@ -216,6 +217,13 @@
         <developerConnection>${projectUrl}</developerConnection>
         <url>${projectUrl}</url>
     </scm>
+    <developers>
+        <developer>
+            <name>Equator</name>
+            <email>841116931@qq.com</email>
+            <url>https://www.equator8848.xyz</url>
+        </developer>
+    </developers>
     <distributionManagement>
         <snapshotRepository>
             <!--这个id和settings.xml中servers.server.id要相同，因为上传jar需要登录才有权限-->
@@ -338,13 +346,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <developers>
-        <developer>
-            <name>Equator</name>
-            <email>841116931@qq.com</email>
-            <url>https://www.equator8848.xyz</url>
-        </developer>
-    </developers>
 
 </project>
