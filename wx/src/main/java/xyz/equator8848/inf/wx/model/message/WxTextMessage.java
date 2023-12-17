@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultCDATA;
+import xyz.equator8848.inf.wx.model.constant.MessageType;
 
 import java.time.Instant;
 
@@ -25,7 +26,7 @@ public class WxTextMessage extends WxMessage {
         response.setFromUserName(fromUserName);
         response.setToUserName(toUserName);
         response.setCreateTime(String.valueOf(Instant.now().getEpochSecond()));
-        response.setMsgType(WxMessage.MessageType.TEXT);
+        response.setMsgType(MessageType.TEXT);
         return response.buildMessageXml();
     }
 }

@@ -15,7 +15,7 @@ import xyz.equator8848.inf.wx.model.GetAccessTokenRequest;
 import xyz.equator8848.inf.wx.model.GetAccessTokenResponse;
 import xyz.equator8848.inf.wx.model.GetQrCodeTicketRequest;
 import xyz.equator8848.inf.wx.model.GetQrCodeTicketResponse;
-import xyz.equator8848.inf.wx.model.constant.SceneFormat;
+import xyz.equator8848.inf.wx.model.constant.SceneEnum;
 import xyz.equator8848.inf.wx.model.constant.SendTemplateErrorCode;
 import xyz.equator8848.inf.wx.model.exception.NeedSubscribeException;
 import xyz.equator8848.inf.wx.model.message.SendTemplateMessageRequest;
@@ -89,7 +89,7 @@ public class WxExternalServiceImpl implements WxExternalService {
 
     @Override
     public String getLoginQrCode(String loginRandomId) {
-        String sceneStr = String.format(SceneFormat.LOGIN, loginRandomId);
+        String sceneStr = String.format(SceneEnum.LOGIN.getFormatter(), loginRandomId);
         try {
             GetQrCodeTicketRequest getQrCodeTicketRequest = new GetQrCodeTicketRequest();
             getQrCodeTicketRequest.setExpireSeconds(720);

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xyz.equator8848.inf.core.model.exception.VerifyException;
 import xyz.equator8848.inf.core.util.json.JsonUtil;
+import xyz.equator8848.inf.wx.model.constant.MessageType;
 import xyz.equator8848.inf.wx.model.hook.VerifyRequest;
 import xyz.equator8848.inf.wx.model.hook.WxVerifyRequest;
 import xyz.equator8848.inf.wx.model.message.WxDefaultMessage;
@@ -66,11 +67,11 @@ public class WxHandler implements WebHookHandler {
         ObjectNode receiveMessageJson = XmlUtils.elementToJSONObject(document.getRootElement());
         WxDefaultMessage receiveMessage = JsonUtil.fromJson(receiveMessageJson.toString(), WxDefaultMessage.class);
         log.info("on wx message {}", data);
-        if (receiveMessage.getMsgType().equals(WxMessage.MessageType.TEXT)) {
+        if (receiveMessage.getMsgType().equals(MessageType.TEXT)) {
             String response = buildTextResponse(wxConfiguration.getOriginalId(), receiveMessage.getFromUserName(), Optional.of(wxConfiguration.getDefaultWelcomeTips()).orElse("你好"));
             log.info("wx onMessage response {}", response);
             return response;
-        } else if (receiveMessage.getMsgType().equals(WxMessage.MessageType.EVENT)) {
+        } else if (receiveMessage.getMsgType().equals(MessageType.EVENT)) {
             WxEventMessage wxEventMessage = JsonUtil.fromJson(receiveMessageJson.toString(), WxEventMessage.class);
             try {
                 return handleEventMessage(wxEventMessage);

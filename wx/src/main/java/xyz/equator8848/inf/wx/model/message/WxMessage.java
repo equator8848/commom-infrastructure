@@ -46,18 +46,4 @@ public abstract class WxMessage {
     }
 
     public abstract void addElement(Element root);
-
-    public static final class MessageType {
-        public static final String TEXT = "text";
-
-        public static final String EVENT = "event";
-    }
-
-    public static final class EventType {
-        public static final String SCAN = "SCAN";
-
-        public static final String SUBSCRIBE = "subscribe";
-
-        public static final String UNSUBSCRIBE = "unsubscribe";
-    }
 }
