@@ -5,10 +5,8 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.junit.Test;
-import springfox.documentation.spring.web.json.Json;
 import xyz.equator8848.inf.core.util.json.JsonUtil;
 import xyz.equator8848.inf.wx.model.message.WxDefaultMessage;
-import xyz.equator8848.inf.wx.model.message.WxEventMessage;
 import xyz.equator8848.inf.wx.util.XmlUtils;
 
 public class XmlUtilsTest {

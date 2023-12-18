@@ -6,14 +6,49 @@
   <artifactId>common-infrastructure</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <url>${projectUrl}</url>
+  <licenses>
+    <license>
+      <name>GPL</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+      <distribution>repo,manual</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Equator</name>
+      <email>841116931@qq.com</email>
+      <url>https://www.equator8848.xyz</url>
+    </developer>
+  </developers>
   <modules>
     <module>core</module>
     <module>auth</module>
     <module>cache</module>
     <module>email</module>
+    <module>wx</module>
   </modules>
+  <scm>
+    <connection>${projectUrl}</connection>
+    <developerConnection>${projectUrl}</developerConnection>
+    <url>${projectUrl}</url>
+  </scm>
+  <distributionManagement>
+    <repository>
+      <id>${serverId}</id>
+      <name>OSS Staging Repository</name>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+    <snapshotRepository>
+      <id>${serverId}</id>
+      <name>OSS Snapshots Repository</name>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
   <properties>
     <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
+    <projectUrl>https://github.com/equator8848/linker_be.git</projectUrl>
+    <serverId>ossrh</serverId>
     <aliyun-dm.version>1.0.5</aliyun-dm.version>
     <okhttp.version>4.9.3</okhttp.version>
     <commons-lang3.version>3.10</commons-lang3.version>
@@ -163,6 +198,68 @@
   </dependencies>
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <additionalparam>-Xdoclint:none</additionalparam>
+          <aggregate>true</aggregate>
+          <charset>UTF-8</charset>
+          <encoding>UTF-8</encoding>
+          <docencoding>UTF-8</docencoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.5</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.7</version>
+        <extensions>true</extensions>
+        <configuration>
+          <serverId>${serverId}</serverId>
+          <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>flatten-maven-plugin</artifactId>

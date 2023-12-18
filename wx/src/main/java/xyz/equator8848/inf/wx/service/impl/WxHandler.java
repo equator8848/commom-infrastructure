@@ -14,15 +14,15 @@ import xyz.equator8848.inf.wx.model.hook.VerifyRequest;
 import xyz.equator8848.inf.wx.model.hook.WxVerifyRequest;
 import xyz.equator8848.inf.wx.model.message.WxDefaultMessage;
 import xyz.equator8848.inf.wx.model.message.WxEventMessage;
-import xyz.equator8848.inf.wx.model.message.WxMessage;
+import xyz.equator8848.inf.wx.model.message.WxTextMessage;
 import xyz.equator8848.inf.wx.model.props.WxConfiguration;
 import xyz.equator8848.inf.wx.service.WebHookHandler;
 import xyz.equator8848.inf.wx.service.WxEventHandler;
+import xyz.equator8848.inf.wx.service.WxTextHandler;
 import xyz.equator8848.inf.wx.util.SignUtil;
 import xyz.equator8848.inf.wx.util.XmlUtils;
 
 import java.util.List;
-import java.util.Optional;
 
 import static xyz.equator8848.inf.wx.model.message.WxTextMessage.buildTextResponse;
 
@@ -47,12 +47,11 @@ public class WxHandler implements WebHookHandler {
         return "";
     }
 
+    @Autowired
     private List<WxEventHandler> wxEventHandlers;
 
     @Autowired
-    public void initWxEventHandlers(List<WxEventHandler> wxEventHandlers) {
-        this.wxEventHandlers = wxEventHandlers;
-    }
+    private List<WxTextHandler> wxTextHandlers;
 
 
     /**
@@ -68,9 +67,8 @@ public class WxHandler implements WebHookHandler {
         WxDefaultMessage receiveMessage = JsonUtil.fromJson(receiveMessageJson.toString(), WxDefaultMessage.class);
         log.info("on wx message {}", data);
         if (receiveMessage.getMsgType().equals(MessageType.TEXT)) {
-            String response = buildTextResponse(wxConfiguration.getOriginalId(), receiveMessage.getFromUserName(), Optional.of(wxConfiguration.getDefaultWelcomeTips()).orElse("你好"));
-            log.info("wx onMessage response {}", response);
-            return response;
+            WxTextMessage wxTextMessage = JsonUtil.fromJson(receiveMessageJson.toString(), WxTextMessage.class);
+            return handleTextMessage(wxTextMessage);
         } else if (receiveMessage.getMsgType().equals(MessageType.EVENT)) {
             WxEventMessage wxEventMessage = JsonUtil.fromJson(receiveMessageJson.toString(), WxEventMessage.class);
             try {
@@ -83,10 +81,19 @@ public class WxHandler implements WebHookHandler {
         }
     }
 
-    public String handleEventMessage(WxEventMessage wxEventMessage) {
+    private String handleEventMessage(WxEventMessage wxEventMessage) {
         for (WxEventHandler wxEventHandler : wxEventHandlers) {
             if (wxEventHandler.canHandle(wxEventMessage)) {
                 return wxEventHandler.handle(wxEventMessage);
+            }
+        }
+        return "";
+    }
+
+    private String handleTextMessage(WxTextMessage wxTextMessage) {
+        for (WxTextHandler wxTextHandler : wxTextHandlers) {
+            if (wxTextHandler.canHandle(wxTextMessage)) {
+                return wxTextHandler.handle(wxTextMessage);
             }
         }
         return "";
