@@ -20,7 +20,7 @@ public class PageData<T> {
      * 每页的数量（默认16）
      */
     @JsonSerialize(using = KeepRawSerializer.class)
-    private Long size;
+    private Long pageSize;
 
     /**
      * 满足条件的总数据量
@@ -41,7 +41,7 @@ public class PageData<T> {
     public static <K, T> PageData<T> wrap(Page<K> page, List<T> data) {
         PageData pageData = new PageData();
         pageData.setPageNum(page.getCurrent());
-        pageData.setSize(page.getSize());
+        pageData.setPageSize(page.getSize());
         pageData.setTotal(page.getTotal());
         if (page.getCurrent() == 1) {
             pageData.setHasNextPage(data.size() < page.getTotal());
