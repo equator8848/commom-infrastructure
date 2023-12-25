@@ -1,4 +1,4 @@
-package xyz.equator8848.inf.core.util.security;
+package xyz.equator8848.inf.security.des;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;

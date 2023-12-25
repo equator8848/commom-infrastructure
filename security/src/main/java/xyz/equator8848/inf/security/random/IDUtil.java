@@ -1,4 +1,4 @@
-package xyz.equator8848.inf.core.util.security;
+package xyz.equator8848.inf.security.random;
 
 
 import java.util.UUID;

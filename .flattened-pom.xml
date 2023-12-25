@@ -27,6 +27,7 @@
     <module>cache</module>
     <module>email</module>
     <module>wx</module>
+    <module>security</module>
   </modules>
   <scm>
     <connection>${projectUrl}</connection>
@@ -134,7 +135,6 @@
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>${guava.version}</version>
-        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>com.sun.mail</groupId>

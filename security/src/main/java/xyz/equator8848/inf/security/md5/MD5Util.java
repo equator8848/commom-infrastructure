@@ -1,4 +1,4 @@
-package xyz.equator8848.inf.core.util.security;
+package xyz.equator8848.inf.security.md5;
 
 import org.apache.commons.codec.digest.DigestUtils;
 

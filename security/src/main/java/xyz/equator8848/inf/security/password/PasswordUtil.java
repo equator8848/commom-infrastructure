@@ -1,8 +1,9 @@
-package xyz.equator8848.inf.core.util.security;
+package xyz.equator8848.inf.security.password;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.Crypt;
 import xyz.equator8848.inf.core.model.exception.PreCondition;
+import xyz.equator8848.inf.security.random.IDUtil;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
