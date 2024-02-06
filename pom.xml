@@ -54,7 +54,7 @@
 
         <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
 
-        <guava.version>22.0</guava.version>
+        <guava.version>31.1-jre</guava.version>
 
         <javax.mail.version>1.6.0</javax.mail.version>
         <aliyun-dm.version>1.0.5</aliyun-dm.version>
