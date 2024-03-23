@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.util.Set;
+
 @Data
 @ConfigurationProperties(prefix = "equator.inf.config.auth")
 public class AuthConfig {
@@ -18,4 +20,10 @@ public class AuthConfig {
      */
     @Value("${equator.inf.config.auth.jwt-token-secret:530dee45151fa0af45bab666ea9f9e70}")
     private String jwtTokenSecret;
+
+    /**
+     * OpenAPI的token
+     */
+    @Value("${equator.inf.config.auth.open-api-tokens:}")
+    private Set<String> openApiTokens;
 }

@@ -59,6 +59,8 @@
         <javax.mail.version>1.6.0</javax.mail.version>
         <aliyun-dm.version>1.0.5</aliyun-dm.version>
 
+        <hutool.version>5.8.22</hutool.version>
+
         <projectUrl>https://github.com/equator8848/linker_be.git</projectUrl>
         <serverId>ossrh</serverId>
 
@@ -201,6 +203,12 @@
                 <groupId>com.aliyun</groupId>
                 <artifactId>dm20151123</artifactId>
                 <version>${aliyun-dm.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

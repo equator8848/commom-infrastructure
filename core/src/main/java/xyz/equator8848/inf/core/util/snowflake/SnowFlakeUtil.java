@@ -1,4 +1,4 @@
-package xyz.equator8848.inf.security.random;
+package xyz.equator8848.inf.core.util.snowflake;
 
 import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.IdUtil;

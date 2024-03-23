@@ -31,11 +31,14 @@ public class LoginUser {
 
     private Short roleType;
 
-    public static LoginUser buildSystemUser() {
+    private Boolean isSystemCaller;
+
+    public static LoginUser buildSystemUser(String systemCallerName) {
         LoginUser loginUser = new LoginUser();
         loginUser.setUid(0L);
-        loginUser.setUserName("LinkerSystem");
-        loginUser.setNickName("LinkerSystem");
+        loginUser.setUserName(systemCallerName);
+        loginUser.setNickName(systemCallerName);
+        loginUser.setIsSystemCaller(true);
         return loginUser;
     }
 }
