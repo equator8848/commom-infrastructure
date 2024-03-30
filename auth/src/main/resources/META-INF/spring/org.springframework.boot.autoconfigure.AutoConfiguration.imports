@@ -1,3 +1,4 @@
 xyz.equator8848.inf.auth.InfAuthAutoConfiguration
 xyz.equator8848.inf.auth.interceptor.handler.OpenApiHandler
 xyz.equator8848.inf.auth.interceptor.handler.SimpleRBACApiHandler
+xyz.equator8848.inf.auth.interceptor.handler.AnonymousApiHandler

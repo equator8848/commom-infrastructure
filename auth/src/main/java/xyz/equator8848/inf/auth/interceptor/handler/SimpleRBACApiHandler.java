@@ -29,6 +29,9 @@ public class SimpleRBACApiHandler implements ApiPermissionHandler {
 
     @Override
     public boolean permissionValidate(HandlerMethod handlerMethod, String token) {
+        if (token == null) {
+            return false;
+        }
         SimpleRBACApi classAnnotation = handlerMethod.getBeanType().getAnnotation(SimpleRBACApi.class);
 
         // 默认是访客权限

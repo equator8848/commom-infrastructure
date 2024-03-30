@@ -33,6 +33,9 @@ public class OpenApiHandler implements ApiPermissionHandler {
 
     @Override
     public boolean permissionValidate(HandlerMethod handlerMethod, String token) {
+        if (token == null) {
+            return false;
+        }
         Set<String> openApiTokens = authConfig.getOpenApiTokens();
         if (CollectionUtils.isEmpty(openApiTokens)) {
             return false;
