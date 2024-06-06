@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -17,11 +17,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * redis配置
  */
 @Configuration
-@EnableCaching
+// @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
     @Bean
-    @SuppressWarnings(value = {"unchecked", "rawtypes","all"})
-    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
+    @Primary
+    @SuppressWarnings(value = {"unchecked", "rawtypes", "all"})
+    public RedisTemplate<Object, Object> buildRedisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 

@@ -8,6 +8,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "equator.inf.config.base")
 public class BaseConfig {
     /**
+     * 系统环境
+     */
+    @Value("${equator.inf.config.base.env:dev}")
+    private String env;
+
+    /**
      * 系统名称
      */
     @Value("${equator.inf.config.base.systemName:equatorSystem}")

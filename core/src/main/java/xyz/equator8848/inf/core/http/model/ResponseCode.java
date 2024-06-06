@@ -6,6 +6,8 @@ public enum ResponseCode {
      */
     SUCCESS(2000, "OK"),
 
+    ASYNC(2002, "异步操作"),
+
     BAD_REQUEST(4000, "请求无效，客户端错误"),
 
     UNAUTHORIZED(4001, "请先登录"),

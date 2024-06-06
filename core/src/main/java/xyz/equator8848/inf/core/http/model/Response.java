@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Response<T> {
     private int status;
+
     private String msg;
+
     private T data;
 
     private static <T> Response response(int status, String msg, T data) {
@@ -31,6 +33,18 @@ public class Response<T> {
 
     public static <T> Response success(String msg, T data) {
         return response(ResponseCode.SUCCESS.getStatus(), msg, data);
+    }
+
+    public static <T> Response async() {
+        return response(ResponseCode.ASYNC.getStatus(), ResponseCode.ASYNC.getMsg(), null);
+    }
+
+    public static <T> Response async(String msg, T data) {
+        return response(ResponseCode.ASYNC.getStatus(), msg, data);
+    }
+
+    public static <T> Response async(T data) {
+        return response(ResponseCode.ASYNC.getStatus(), ResponseCode.ASYNC.getMsg(), data);
     }
 
     public static <T> Response forbidden(String msg, T data) {

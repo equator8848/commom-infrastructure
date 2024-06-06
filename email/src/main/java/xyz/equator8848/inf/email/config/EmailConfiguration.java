@@ -1,6 +1,7 @@
 package xyz.equator8848.inf.email.config;
 
 import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import xyz.equator8848.inf.email.service.impl.AliEmailConfiguration;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * @Date: 2021/11/21 23:36
  **/
 @Data
+@ConfigurationProperties(prefix = "equator.inf.config.email")
 public class EmailConfiguration {
     /**
      * Ali、EnterpriseWx

@@ -15,6 +15,7 @@
         <module>email</module>
         <module>wx</module>
         <module>security</module>
+        <module>mysql</module>
     </modules>
 
     <properties>

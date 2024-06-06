@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>core</artifactId>
-
     <packaging>jar</packaging>
 
     <properties>
