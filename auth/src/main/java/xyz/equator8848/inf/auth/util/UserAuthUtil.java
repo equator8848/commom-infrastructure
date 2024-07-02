@@ -3,6 +3,7 @@ package xyz.equator8848.inf.auth.util;
 
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.google.common.collect.ImmutableMap;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.equator8848.inf.auth.model.bo.LoginUser;
@@ -49,10 +50,17 @@ public class UserAuthUtil {
      * @return
      */
     public LoginUser getLoginUserFromJWT(String token) {
-        DecodedJWT decodedJWT = jwtUtil.decode(token);
-        String loginUserStr = decodedJWT.getClaim(LOGIN_USER_KEY).asString();
-        PreCondition.isNotNull(loginUserStr);
-        return JsonUtil.fromJson(loginUserStr, LoginUser.class);
+        if (StringUtils.isBlank(token)) {
+            return null;
+        }
+        try {
+            DecodedJWT decodedJWT = jwtUtil.decode(token);
+            String loginUserStr = decodedJWT.getClaim(LOGIN_USER_KEY).asString();
+            PreCondition.isNotNull(loginUserStr);
+            return JsonUtil.fromJson(loginUserStr, LoginUser.class);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /**
@@ -76,6 +84,18 @@ public class UserAuthUtil {
         LoginUser loginUser = UserContextUtil.getUser();
         if (!isAdmin()) {
             if (!loginUser.getUid().equals(uid)) {
+                throw new ForbiddenException("你没有权限操作该资源");
+            }
+        }
+    }
+
+    /**
+     * @param uid 操作的目标资源uid
+     */
+    public static void checkPermission(Integer uid) {
+        LoginUser loginUser = UserContextUtil.getUser();
+        if (!isAdmin()) {
+            if (!loginUser.getUid().equals(Long.valueOf(uid))) {
                 throw new ForbiddenException("你没有权限操作该资源");
             }
         }

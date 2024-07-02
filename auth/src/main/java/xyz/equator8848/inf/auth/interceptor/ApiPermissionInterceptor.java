@@ -14,6 +14,7 @@ import xyz.equator8848.inf.auth.interceptor.handler.AnonymousApiHandler;
 import xyz.equator8848.inf.auth.interceptor.handler.ApiPermissionHandler;
 import xyz.equator8848.inf.auth.interceptor.handler.OpenApiHandler;
 import xyz.equator8848.inf.auth.interceptor.handler.SimpleRBACApiHandler;
+import xyz.equator8848.inf.auth.model.bo.LoginUser;
 import xyz.equator8848.inf.auth.util.UserAuthUtil;
 import xyz.equator8848.inf.auth.util.UserContextUtil;
 import xyz.equator8848.inf.core.http.model.Response;
@@ -58,13 +59,21 @@ public class ApiPermissionInterceptor implements HandlerInterceptor {
         for (ApiPermissionHandler apiPermissionHandler : apiPermissionHandlers) {
             if (apiPermissionHandler.canHandle(handlerMethod)) {
                 if (apiPermissionHandler.permissionValidate(handlerMethod, token)) {
+                    LoginUser loginUser = anonymousApiHandler.buildLoginUser(token);
+                    if (loginUser != null) {
+                        UserContextUtil.addUser(loginUser);
+                        return true;
+                    }
                     return true;
                 } else {
+                    log.debug("apiPermissionHandler {} uri {} token {} no auth", apiPermissionHandler, request.getRequestURI(), token);
                     invalidToken(res);
                     return false;
                 }
             }
         }
+        log.debug("uri {} token {} no auth", request.getRequestURI(), token);
+        invalidToken(res);
         return false;
     }
 

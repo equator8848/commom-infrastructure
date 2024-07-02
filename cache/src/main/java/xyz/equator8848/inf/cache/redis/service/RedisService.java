@@ -127,6 +127,18 @@ public class RedisService {
     }
 
     /**
+     * 缓存List数据
+     *
+     * @param key  缓存的键值
+     * @param data 待缓存的数据
+     * @return 缓存的对象
+     */
+    public <T> long setCacheListItem(final String key, final T data) {
+        Long count = redisTemplate.opsForList().rightPush(key, data);
+        return count == null ? 0 : count;
+    }
+
+    /**
      * 获得缓存的list对象
      *
      * @param key 缓存的键值

@@ -1,14 +1,19 @@
 package xyz.equator8848.inf.auth.interceptor.handler;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import xyz.equator8848.inf.auth.annotation.AnonymousApi;
 import xyz.equator8848.inf.auth.model.bo.LoginUser;
+import xyz.equator8848.inf.auth.util.UserAuthUtil;
 
 import java.util.Objects;
 
 @Component
 public class AnonymousApiHandler implements ApiPermissionHandler {
+    @Autowired
+    private UserAuthUtil userAuthUtil;
+
     @Override
     public boolean canHandle(HandlerMethod handlerMethod) {
         return Objects.nonNull(handlerMethod.getBeanType().getAnnotation(AnonymousApi.class)) ||
@@ -17,7 +22,7 @@ public class AnonymousApiHandler implements ApiPermissionHandler {
 
     @Override
     public LoginUser buildLoginUser(String token) {
-        return null;
+        return userAuthUtil.getLoginUserFromJWT(token);
     }
 
     @Override
