@@ -19,7 +19,9 @@ public class TimeTransformUtil {
 
     public static String secondToDisplayTime(BigInteger size) {
         String displaySize;
-        if (size.divide(ONE_HOUR_BI).compareTo(BigInteger.ZERO) > 0) {
+        if (size.divide(ONE_DAY_BI).compareTo(BigInteger.ZERO) > 0) {
+            displaySize = size.divide(ONE_DAY_BI) + "天";
+        } else if (size.divide(ONE_HOUR_BI).compareTo(BigInteger.ZERO) > 0) {
             displaySize = size.divide(ONE_HOUR_BI) + "小时";
         } else if (size.divide(ONE_MINUTE_BI).compareTo(BigInteger.ZERO) > 0) {
             displaySize = size.divide(ONE_MINUTE_BI) + "分钟";
