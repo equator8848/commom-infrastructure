@@ -100,7 +100,9 @@ public class WxExternalServiceImpl implements WxExternalService {
                             wxConfiguration.getWxApiHost(), getAccessToken()),
                     Collections.emptyMap(), JsonUtil.toJson(getQrCodeTicketRequest));
             GetQrCodeTicketResponse getQrCodeTicketResponse = JsonUtil.fromJson(response, GetQrCodeTicketResponse.class);
-            return String.format("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s", getQrCodeTicketResponse.getTicket());
+            String ticket = getQrCodeTicketResponse.getTicket();
+            PreCondition.isNotNull(ticket, "从微信获取登录二维码为空，请清理本地缓存后重试");
+            return String.format("https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s", ticket);
         } catch (Exception e) {
             log.error("getLoginQrCode error {}", loginRandomId, e);
             return "";
