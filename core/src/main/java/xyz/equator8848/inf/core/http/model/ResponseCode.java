@@ -4,6 +4,8 @@ public enum ResponseCode {
     /**
      * 状态码
      */
+    SUCCESS_LEGACY(0, "OK"),
+
     SUCCESS(2000, "OK"),
 
     ASYNC(2002, "异步操作"),
