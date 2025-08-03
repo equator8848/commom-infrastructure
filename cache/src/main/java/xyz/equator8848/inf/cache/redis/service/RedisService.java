@@ -161,11 +161,23 @@ public class RedisService {
     }
 
     /**
+     * 缓存Set数据
+     *
+     * @param key  缓存的键值
+     * @param data 待缓存的数据
+     * @return 缓存的对象
+     */
+    public <T> long setCacheSetItem(final String key, final T data) {
+        Long count = redisTemplate.opsForSet().add(key, data);
+        return count == null ? 0 : count;
+    }
+
+    /**
      * 缓存Set
      *
      * @param key     缓存键值
      * @param dataSet 缓存的数据
-     * @return 缓存数据的对象
+     * @return
      */
     public <T> BoundSetOperations<String, T> setCacheSet(final String key, final Set<T> dataSet) {
         BoundSetOperations<String, T> setOperation = redisTemplate.boundSetOps(key);
@@ -184,6 +196,18 @@ public class RedisService {
      */
     public <T> Set<T> getCacheSet(final String key) {
         return redisTemplate.opsForSet().members(key);
+    }
+
+
+    /**
+     * 判断是否存在数据
+     *
+     * @param key  缓存的键值
+     * @param data 待缓存的数据
+     * @return 是否存在数据
+     */
+    public <T> boolean existKeyVal(final String key, final T data) {
+        return Boolean.TRUE.equals(redisTemplate.opsForSet().isMember(key, data));
     }
 
     /**
