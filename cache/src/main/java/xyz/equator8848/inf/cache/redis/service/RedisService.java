@@ -206,8 +206,18 @@ public class RedisService {
      * @param data 待缓存的数据
      * @return 是否存在数据
      */
-    public <T> boolean existKeyVal(final String key, final T data) {
+    public <T> boolean isSetHasKeyVal(final String key, final T data) {
         return Boolean.TRUE.equals(redisTemplate.opsForSet().isMember(key, data));
+    }
+
+    /**
+     * 获取Set的大小
+     *
+     * @param key 键值
+     * @return
+     */
+    public Long getSetSize(final String key) {
+        return redisTemplate.opsForSet().size(key);
     }
 
     /**
