@@ -42,8 +42,6 @@
         <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
         <log4j2.version>2.17.1</log4j2.version>
 
-        <swagger.fox.version>3.0.0</swagger.fox.version>
-
         <java-jwt.version>3.8.2</java-jwt.version>
 
         <okhttp.version>4.9.3</okhttp.version>
@@ -140,11 +138,6 @@
                 <scope>test</scope>
             </dependency>
 
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-boot-starter</artifactId>
-                <version>${swagger.fox.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.auth0</groupId>
